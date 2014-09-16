@@ -34,7 +34,7 @@ This file contains custom application specific web.xml content.
 
   <context-param>
     <param-name>web.bootstrap.spring.file</param-name>
-    <param-value>classpath:edu/usuhs/kuali/rice/rice-apps/BootStrapSpringBeans.xml</param-value>
+    <param-value>classpath:edu/usuhs/kuali/rice/apps/BootStrapSpringBeans.xml</param-value>
   </context-param>
 
   <filter>
@@ -310,6 +310,10 @@ This file contains custom application specific web.xml content.
   <servlet>
     <servlet-name>krad</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+    	<param-name>contextConfigLocation</param-name>
+    	<param-value>WEB-INF/krad-servlet.xml,WEB-INF/usuhs-servlet.xml</param-value>
+    </init-param>
     <load-on-startup>3</load-on-startup>
   </servlet>
 
