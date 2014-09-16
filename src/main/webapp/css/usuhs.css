@@ -1,0 +1,20 @@
+.uif-viewContentWrapper {
+    background-color: #e5e5e5;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+.col-lg-4 {
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border-radius: 3px;
+    border: 1px solid #d8d8d8;
+    border-width: 1px 1px 3px 3px;
+    min-height: 28px;
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
+}
+
+.usuhs-brand {
+    margin-top : 0px
+    padding : 0px 15px 15px 15px;
+}

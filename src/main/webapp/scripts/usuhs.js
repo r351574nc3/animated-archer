@@ -1,0 +1,2 @@
+function setBlockUIDefaults() {}
+function setGrowlDefaults() {}
