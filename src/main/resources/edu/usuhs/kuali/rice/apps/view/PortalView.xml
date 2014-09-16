@@ -9,14 +9,11 @@
               value="edu.usuhs.kuali.rice.apps.form.PortalForm" />
     <property name="additionalCssFiles">
       <list>
-        <!--
         <value>css/bootstrap.min.css</value>
         <value>css/bootstrap-theme.min.css</value>
-        -->
         <value>css/sticky-footer-navbar.css</value>
       </list>
     </property>
-    <!--
     <property name="additionalScriptFiles">
       <list>
         <value>scripts/jquery.min.js</value>
@@ -25,7 +22,6 @@
     </property>
     <property name="applicationHeader" ref="PortalHeader"/>
     <property name="applicationFooter" ref="PortalFooter"/>
-    -->
     <property name="breadcrumbs.render" value="false"/>
     <property name="singlePageView" value="true"/>
   </bean>
