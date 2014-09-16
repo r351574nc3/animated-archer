@@ -36,42 +36,55 @@ import org.kuali.rice.krad.uif.element.ContentElementBase;
 public class Card extends ContentElementBase {
     private static final long serialVersionUID = -6491546893195180115L;
 
-    protected String labelText;
+    protected String headerText;
     protected String url;
     protected String buttonText;
     protected String description;
 
     public Card() {
-	super.setRender(true);
+        super.setRender(true);
     }
 
-    public void setLabelText(final String labelText) {
-	this.labelText = labelText;
+    public void setHeaderText(final String headerText) {
+        this.headerText = headerText;
     }
-
-    public String getLabelText() {
-	return labelText;
+    
+    public String getHeaderText() {
+        return headerText;
     }
-
+    
     public void setUrl(final String url) {
-	this.url = url;
+        this.url = url;
+    }
+    public String getUrl() {
+        return url;
     }
     
     public String getDescription() {
-	return description;
+        return description;
     }
     public void setDescription(final String description) {
-	this.description = description;
+        this.description = description;
     }
     
-    public String getUrl() {
-	return url;
-    }
     public void setButtonText(final String buttonText) {
-	this.buttonText = buttonText;
+        this.buttonText = buttonText;
     }
     
     public String getButtonText() {
-	return buttonText;
+        return buttonText;
+    }
+
+    /**
+     * @see org.kuali.rice.krad.uif.component.ComponentBase#copy()
+     */
+    @Override
+    protected <T> void copyProperties(T component) {
+        super.copyProperties(component);
+        Card cardCopy = (Card) component;
+        cardCopy.setUrl(this.url);
+        cardCopy.setHeaderText(this.headerText);
+        cardCopy.setButtonText(this.buttonText);
+        cardCopy.setDescription(this.description);
     }
 }
