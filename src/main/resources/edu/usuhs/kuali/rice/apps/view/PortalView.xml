@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+  <bean id="PortalView" abstract="true" parent="Uif-FormView">
+    <property name="additionalCssFiles">
+      <list>
+        <value>css/bootstrap.min.css</value>
+        <value>css/bootstrap-theme.min.css</value>
+        <value>css/sticky-footer-navbar.css</value>
+      </list>
+    </property>
+    <property name="additionalScriptFiles">
+      <list>
+        <value>scripts/jquery.min.js</value>
+        <value>scripts/bootstrap.min.js</value>
+      </list>
+    </property>
+    <property name="theme">
+      <bean parent="GlobalTheme"
+            p:usesThemeBuilder="false"
+            p:minCssSourceFiles="css/usuhs.css" p:minScriptSourceFiles="scripts/usuhs.js" />
+    </property>
+    <property name="applicationHeader" ref="PortalHeader"/>
+    <property name="applicationFooter" ref="PortalFooter"/>
+    <property name="breadcrumbs.render" value="false"/>
+    <property name="singlePageView" value="true"/>
+  </bean>
+  <bean id="PortalHeader" parent="Uif-GlobalApplicationHeader-parentBean"
+            p:template="/WEB-INF/ftl/usuhsHeader.ftl"
+            p:templateName="usuhs_header"
+            p:render="true"/>
+  
+  <bean id="PortalFooter" parent="Uif-GlobalApplicationFooter-parentBean"
+        p:template="/WEB-INF/ftl/usuhsFooter.ftl"
+        p:templateName="usuhs_footer"
+        p:render="true"/>
+
+  
+  <bean id="Landing" parent="PortalView">
+    <property name="page">
+	<bean id="Landing-Page" parent="Uif-Page" p:render="true">
+	  <property name="cssClasses">
+	    <list>
+	      <value>container</value>
+	    </list>
+	</property>
+	<property name="items">
+	  <list>
+	    <ref bean="Portal-Cards" />
+	  </list>
+	</property>
+	</bean>
+    </property>
+  </bean>
+
+  <bean id="Portal-Cards" parent="Uif-HorizontalBoxGroup">
+    <property name="cssClasses">
+      <list>
+	<value>row</value>
+      </list>
+    </property>
+    <property name="items">
+      <list>
+	<bean parent="Uif-Link" p:linkText="blah" p:href="http://localhost:8080/rice-apps" />
+            <bean parent="Uif-Space" />
+	    <bean parent="Uif-Link" p:href="http://www.kuali.org" p:linkText="Kuali Website"/>
+	    <bean parent="Uif-Link" p:href="http://www.kuali.org" p:linkText="Kuali Website"/>
+	    <bean parent="Uif-Link" p:href="http://www.kuali.org" p:linkText="Kuali Website"/>
+	    <bean parent="Uif-Link" p:href="http://www.kuali.org" p:linkText="Kuali Website"/>
+	    <bean parent="Uif-Link" p:href="http://www.kuali.org" p:linkText="Kuali Website"/>
+	    <bean parent="Uif-Link" p:href="http://www.google.com" p:linkText="Google"/>
+	<bean parent="Uif-Card" p:labelText="Author"
+	      p:description="Author lookup"
+	      p:buttonText="Lookup an Author" 
+              p:url="@{#ConfigProperties['application.url']}/kr-krad/lookup?methodToCall=start&amp;dataObjectClassName=trnapp.bookstore.Author&amp;showMaintenanceLinks=true" />
+	<!--
+	<bean parent="Uif-Card" p:labelText="Book Lookup"
+	      p:description="Book Lookup"
+	      p:buttonText="Lookup a Book" 
+	      p:url="@{#ConfigProperties['application.url']}/kr-krad/lookup?methodToCall=start&amp;dataObjectClassName=trnapp.bookstore.Book&amp;showMaintenanceLinks=true" />
+	-->
+      </list>
+    </property>
+  </bean>
+
+  <bean id="Uif-Card" parent="Uif-Card-parentBean" />
+
+  <bean id="Uif-Card-parentBean" abstract="true" class="edu.usuhs.kuali.rice.apps.card.Card"
+        parent="Uif-ContentElementBase" scope="prototype">
+    <property name="template" value="/WEB-INF/ftl/components/elements/card.ftl"/>
+    <property name="templateName" value="uif_card"/>
+    <property name="cssClasses">
+      <list>
+        <value>uif-card col-lg-4</value>
+      </list>
+    </property>
+  </bean>
+</beans>
