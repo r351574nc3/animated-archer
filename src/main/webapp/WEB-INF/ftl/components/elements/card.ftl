@@ -17,18 +17,16 @@
 -->
 <#macro uif_card element>
 
-    <#if element.labelText?has_content>
-        <#local label="${element.labelText}"/>
+        <#local header="${element.headerText}"/>
         <#local url="${element.url}"/>
         <#local description="${element.description}"/>
         <#local button="${element.buttonText}"/>
 
-        <div class="col-lg-4">
-           <h2>${label}</h2>
+        <div class="col-lg-3">
+           <h2>${header}</h2>
 
           <p>
             <a class="btn btn-primary" href="${url}" role="button">${button} <span class="glyphicon glyphicon-chevron-right" /></a>
           </p>
         </div>
-    </#if>
 </#macro>
