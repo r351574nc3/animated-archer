@@ -60,7 +60,7 @@ public class LandingController extends UifControllerBase {
         adminRoles.add(adminRole);
 
         form.setTomorrowFormatted(new SimpleDateFormat("MM/dd/yyyy").format(getNextBusinessDay()));
-        form.setIsAdmin(getRoleService().principalHasRole(currentUser, adminRoles, new HashMap<String,String>())); 
+        form.setUserIsAdmin(getRoleService().principalHasRole(currentUser, adminRoles, new HashMap<String,String>())); 
 
         form.setViewId(DEFAULT_VIEW_ID);
         form.setView(KRADServiceLocatorWeb.getViewService().getViewById(DEFAULT_VIEW_ID));
