@@ -68,6 +68,18 @@
               p:cssClasses="row">
 	      <property name="items">
 	        <list>
+	          <bean parent="Uif-Card" p:headerText="Your Pending Actions"
+                    p:buttonText="Go" p:url="@{#ConfigProperties['application.url']}/kew/ActionList.do"
+                    p:description="Action items waiting on your response or acknowledgement."
+                    />
+	          <bean parent="Uif-Card" p:headerText="Your Requests"
+                    p:buttonText="Go" p:url="@{#ConfigProperties['application.url']}/kew/ActionList.do?methodToCall=start&amp;viewOutbox=true"
+                    p:description="Your queue of requests."
+                    />
+	          <bean parent="Uif-Card" p:headerText="Tomorrow's Parking Requests"
+                    p:buttonText="Go" p:url="@{#ConfigProperties['application.url']}/kr-krad/lookup?methodToCall=search&amp;dataObjectClassName=edu.usuhs.kuali.rice.apps.document.ParkingDocumentLookup&amp;returnLocation=@{#ConfigProperties['application.url']}/kr-krad/portal/home&amp;hideReturnLink=true&amp;lookupCriteria[rangeLowerBoundKeyPrefix_fromDate]=@{tomorrowFormatted}&amp;lookupCriteria[fromDate]=@{tomorrowFormatted}"
+                    p:description="Lookup Parking Requests for tomorrow"
+                    />
 	          <bean parent="Uif-Card" p:headerText="Sabbatical"
 	                p:buttonText="Go"
 	                p:description="Submit a form for Sabbatical"
