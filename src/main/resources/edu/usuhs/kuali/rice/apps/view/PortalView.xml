@@ -12,12 +12,14 @@
         <value>css/bootstrap.min.css</value>
         <value>css/bootstrap-theme.min.css</value>
         <value>css/sticky-footer-navbar.css</value>
+        <value>css/usuhs.css</value>
       </list>
     </property>
     <property name="additionalScriptFiles">
       <list>
         <value>scripts/jquery.min.js</value>
         <value>scripts/bootstrap.min.js</value>
+        <value>scripts/usuhs.js</value>
       </list>
     </property>
     <property name="applicationHeader" ref="PortalHeader"/>
@@ -28,7 +30,13 @@
   <bean id="PortalHeader" parent="Uif-GlobalApplicationHeader-parentBean"
             p:template="/WEB-INF/ftl/usuhsHeader.ftl"
             p:templateName="usuhs_header"
-            p:render="true"/>
+            p:render="true">
+    <property name="templateOptions">
+      <map>
+        <entry key="adminUrl" value="@{userIsAdmin ? #ConfigProperties['application.url'] + '/portal.do?selectedTab=administration' : ''}" />
+      </map>
+    </property>    
+  </bean>
   
   <bean id="PortalFooter" parent="Uif-GlobalApplicationFooter-parentBean"
         p:template="/WEB-INF/ftl/usuhsFooter.ftl"
@@ -44,30 +52,34 @@
 	        <value>container</value>
 	      </list>
 	    </property>
-	    <property name="items">
-	      <list>
-            <!--
-            <bean parent="Uif-Link" p:linkText="Administration"
-                  p:href="@{#ConfigProperties['application.url']}/portal.do?selectedTab=administration" 
-                  p:render="@{admin}" />
-            -->
-	        <bean parent="Uif-Card" p:headerText="Author"
-                  p:buttonText="Author" p:description=""
-                  p:url="@{#ConfigProperties['application.url']}/kr-krad/lookup?methodToCall=start&amp;dataObjectClassName=trnapp.bookstore.Author&amp;showMaintenanceLinks=true"
-                  />
-<!--
-	              p:description="Author lookup"
-	              p:buttonText="Lookup an Author" 
-                  p:url="@{#ConfigProperties['application.url']}/kr-krad/lookup?methodToCall=start&amp;dataObjectClassName=trnapp.bookstore.Author&amp;showMaintenanceLinks=true"
-                  />
--->
-	      </list>
-	    </property>
+        <property name="items">
+          <list>
+            <ref bean="Portal-cards" />
+          </list>
+        </property>
 	  </bean>
     </property>
 
   </bean>
-
+  <bean id="Portal-cards" parent="Uif-VerticalBoxGroup">
+    <property name="items">
+      <list>
+        <bean parent="Uif-HorizontalBoxGroup"
+              p:cssClasses="row">
+	      <property name="items">
+	        <list>
+	          <bean parent="Uif-Card" p:headerText="Sabbatical"
+	                p:buttonText="Go"
+	                p:description="Submit a form for Sabbatical"
+                    p:url="@{#ConfigProperties['application.url']}/kr-krad/lookup?methodToCall=start&amp;dataObjectClassName=trnapp.bookstore.Author&amp;showMaintenanceLinks=true"
+                    />
+	        </list>
+	      </property>
+        </bean>
+        <bean parent="Uif-Space" />
+      </list>
+    </property>
+  </bean>
   <bean id="Uif-Card" parent="Uif-Card-parentBean" />
 
   <bean id="Uif-Card-parentBean" abstract="true" class="edu.usuhs.kuali.rice.apps.card.Card"
@@ -80,19 +92,4 @@
       </list>
     </property>
   </bean>
-
-<!--
-  <bean id="Uif-Card" parent="Uif-Card-parentBean"/>
-  <bean id="Uif-Card-parentBean" abstract="true" class="edu.usuhs.kuali.rice.apps.card.Card"
-        parent="Uif-ContentElementBase" scope="prototype">
-    <property name="template" value="/WEB-INF/ftl/components/elements/link.ftl"/>
-    <property name="templateName" value="uif_card"/>
-    <property name="cssClasses">
-      <list>
-        <value>uif-link</value>
-      </list>
-    </property>
-    <property name="target" value="_self"/>
-  </bean>
--->
 </beans>
