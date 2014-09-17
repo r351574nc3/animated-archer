@@ -9,7 +9,7 @@ public class PortalForm extends UifFormBase {
     private static final long serialVersionUID = -2439489169870273604L;
 
     protected String tomorrowFormatted;
-    protected boolean admin;
+    protected boolean userIsAdmin;
 
     public String getTomorrowFormatted() {
         return this.tomorrowFormatted;
@@ -20,11 +20,11 @@ public class PortalForm extends UifFormBase {
     }
 
     
-    public boolean isAdmin() {
-        return this.admin;
+    public boolean getUserIsAdmin() {
+        return this.userIsAdmin;
     }
 
-    public void setIsAdmin(final boolean admin) {
-        this.admin = admin;
+    public void setUserIsAdmin(final boolean userIsAdmin) {
+        this.userIsAdmin = userIsAdmin;
     }
 }
