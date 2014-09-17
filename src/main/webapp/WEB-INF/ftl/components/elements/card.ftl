@@ -22,9 +22,9 @@
         <#local description="${element.description}"/>
         <#local button="${element.buttonText}"/>
 
-        <div class="col-lg-3">
+        <div class="col-lg-4">
            <h2>${header}</h2>
-
+           ${description}
           <p>
             <a class="btn btn-primary" href="${url}" role="button">${button} <span class="glyphicon glyphicon-chevron-right" /></a>
           </p>
