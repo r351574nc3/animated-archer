@@ -17,7 +17,9 @@
     </property>
     <property name="additionalScriptFiles">
       <list>
+	<!--
         <value>scripts/jquery.min.js</value>
+	-->
         <value>scripts/bootstrap.min.js</value>
         <value>scripts/usuhs.js</value>
       </list>
@@ -61,6 +63,7 @@
     </property>
 
   </bean>
+
   <bean id="Portal-cards" parent="Uif-VerticalBoxGroup">
     <property name="items">
       <list>
@@ -69,11 +72,11 @@
 	      <property name="items">
 	        <list>
 	          <bean parent="Uif-Card" p:headerText="Your Pending Actions"
-                    p:buttonText="Go" p:url="@{#ConfigProperties['application.url']}/kew/ActionList.do"
+                    p:buttonText="Go" p:url="@{#ConfigProperties['application.url']}/kr-krad/portal/actionList"
                     p:description="Action items waiting on your response or acknowledgement."
                     />
 	          <bean parent="Uif-Card" p:headerText="Your Requests"
-                    p:buttonText="Go" p:url="@{#ConfigProperties['application.url']}/kew/ActionList.do?methodToCall=start&amp;viewOutbox=true"
+                    p:buttonText="Go" p:url="@{#ConfigProperties['application.url']}/kr-krad/portal/outbox"
                     p:description="Your queue of requests."
                     />
 	          <bean parent="Uif-Card" p:headerText="Tomorrow's Parking Requests"
@@ -104,4 +107,34 @@
       </list>
     </property>
   </bean>
+
+
+  <bean id="ActionList" parent="PortalView">
+    <property name="page">
+	  <bean parent="Uif-Page"
+		p:onDocumentReadyScript="loadBodyFrom(&apos;@{#ConfigProperties['application.url']}/kew/ActionList.do&apos;)">
+	    <property name="cssClasses">
+	      <list>
+	        <value>container</value>
+	      </list>
+	    </property>
+	  </bean>
+    </property>
+
+  </bean>
+
+  <bean id="Outbox" parent="PortalView">
+    <property name="page">
+	  <bean parent="Uif-Page"
+		p:onDocumentReadyScript="loadBodyFrom(&apos;@{#ConfigProperties['application.url']}/kew/ActionList.do?methodToCall=start&amp;viewOutbox=true&apos;);">
+	    <property name="cssClasses">
+	      <list>
+	        <value>container</value>
+	      </list>
+	    </property>
+	  </bean>
+    </property>
+
+  </bean>
+
 </beans>

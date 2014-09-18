@@ -65,7 +65,28 @@ public class LandingController extends UifControllerBase {
         form.setViewId(DEFAULT_VIEW_ID);
         form.setView(KRADServiceLocatorWeb.getViewService().getViewById(DEFAULT_VIEW_ID));
         form.setMethodToCall("start");
-        System.out.println("Calling start");
+        return start(form, result, request, response);
+    }
+
+    @RequestMapping("/actionList")
+    public ModelAndView actionList(@ModelAttribute("KualiForm") PortalForm form, 
+                             BindingResult result,
+                             HttpServletRequest request, 
+                             HttpServletResponse response) {             
+        form.setViewId("ActionList");
+        form.setView(KRADServiceLocatorWeb.getViewService().getViewById("ActionList"));
+        form.setMethodToCall("start");
+        return start(form, result, request, response);
+    }
+
+    @RequestMapping("/outbox")
+    public ModelAndView outbox(@ModelAttribute("KualiForm") PortalForm form, 
+                             BindingResult result,
+                             HttpServletRequest request, 
+                             HttpServletResponse response) {             
+        form.setViewId("Outbox");
+        form.setView(KRADServiceLocatorWeb.getViewService().getViewById("Outbox"));
+        form.setMethodToCall("Outbox");
         return start(form, result, request, response);
     }
 }
