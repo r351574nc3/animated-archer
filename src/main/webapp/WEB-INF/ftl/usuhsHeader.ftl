@@ -9,13 +9,14 @@
         <div class="navbar-header">
           <a class="navbar-brand usuhs-brand" style="padding: 0px 15px 15px 15px;" href="#"><img src="/rice-apps/images/logo.png" /></a>
         </div>
-        <#if adminUrl?has_content>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+              <li><a href="/rice-apps/">Home</a></li>
+              <#if adminUrl?has_content>
               <li><a href="${adminUrl}">Administration</a></li>
+              </#if>
           </ul>
         </div>
-        </#if>
       </div>
     </div>
 </#macro>
