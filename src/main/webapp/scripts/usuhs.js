@@ -25,10 +25,9 @@ function loadBodyFrom(href) {
     jQuery.get(href, function(data) {
 	var bodyData = data.substring(data.indexOf('<body'), data.indexOf('</body>') + '</body>'.length);
 	
-        var body = jQuery(jQuery.parseHTML(bodyData)[1]);
+        var body = jQuery(jQuery.parseHTML(bodyData)[1]).find('form table table tbody tr:nth-child(4) td:nth-child(2)');
+        console.log(body.html())
         
-	if (body.attr('id') == 'Uif-Application') {
-            jQuery('#Uif-PageContentWrapper').append(body);
-	}
+	jQuery('#Uif-PageContentWrapper').append(body);
     });
 }

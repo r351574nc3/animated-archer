@@ -49,6 +49,7 @@
   <bean id="Landing" parent="PortalView">
     <property name="page">
 	  <bean parent="Uif-Page">
+	    <property name="headerText" value="Action List" />
 	    <property name="cssClasses">
 	      <list>
 	        <value>container</value>
