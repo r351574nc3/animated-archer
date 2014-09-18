@@ -25,9 +25,9 @@ function loadBodyFrom(href) {
     jQuery.get(href, function(data) {
         var bodyData = data.substring(data.indexOf('<body'), data.indexOf('</body>') + '</body>'.length);
     
-        var body = jQuery(jQuery.parseHTML(bodyData)[1]);
-        var buttons = body.find('form table table tr:nth-child(1)');
-        body.remove(buttons);
+        var body = jQuery(jQuery.parseHTML(bodyData)[1]).find('form').remove('#headerarea-small');
+        // var buttons = body.find('form table table tr:nth-child(1)');
+        body.find('#headerarea-small').remove();
         jQuery('#Uif-PageContentWrapper').append(body);
     });
 }

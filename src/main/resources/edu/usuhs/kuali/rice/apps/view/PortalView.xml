@@ -110,37 +110,39 @@
   </bean>
 
 
-  <bean id="ActionList" parent="PortalView"
-        p:header.render="true"
-        p:header.headerText="Inbox">
+  <bean id="ActionList" parent="PortalView">
     <property name="page">
 	  <bean parent="Uif-Page"
-        p:header.render="true"
-        p:header.headerText="Inbox"
-		p:onDocumentReadyScript="loadBodyFrom(&apos;@{#ConfigProperties['application.url']}/kew/ActionList.do&apos;)">
+		p:onDocumentReadyScript="loadBodyFrom(&apos;@{#ConfigProperties['application.url']}/kew/ActionList.do&amp;viewOutbox=false&apos;)">
 	    <property name="cssClasses">
 	      <list>
 	        <value>container</value>
 	      </list>
 	    </property>
+        <property name="items">
+          <list>
+            <bean parent="Uif-HeaderOne" p:headerText="Inbox" />
+          </list>
+        </property>
 	  </bean>
     </property>
 
   </bean>
 
-  <bean id="Outbox" parent="PortalView"
-        p:header.render="true"
-        p:header.headerText="Outbox">
+  <bean id="Outbox" parent="PortalView">
     <property name="page">
 	  <bean parent="Uif-Page"
-            p:header.render="true"
-            p:header.headerText="Outbox"
 		p:onDocumentReadyScript="loadBodyFrom(&apos;@{#ConfigProperties['application.url']}/kew/ActionList.do?methodToCall=start&amp;viewOutbox=true&apos;);">
 	    <property name="cssClasses">
 	      <list>
 	        <value>container</value>
 	      </list>
 	    </property>
+        <property name="items">
+          <list>
+            <bean parent="Uif-HeaderOne" p:headerText="Outbox" />
+          </list>
+        </property>
 	  </bean>
     </property>
 
