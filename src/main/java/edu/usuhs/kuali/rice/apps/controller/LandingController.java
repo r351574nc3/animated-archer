@@ -73,6 +73,12 @@ public class LandingController extends UifControllerBase {
                              BindingResult result,
                              HttpServletRequest request, 
                              HttpServletResponse response) {             
+        final String currentUser = GlobalVariables.getUserSession().getPrincipalId();
+        final String adminRole = getRoleService().getRoleByNamespaceCodeAndName("KR-SYS", "Technical Administrator").getId();
+        final List<String> adminRoles = new ArrayList<String>();
+        adminRoles.add(adminRole);
+        form.setUserIsAdmin(getRoleService().principalHasRole(currentUser, adminRoles, new HashMap<String,String>())); 
+
         form.setViewId("ActionList");
         form.setView(KRADServiceLocatorWeb.getViewService().getViewById("ActionList"));
         form.setMethodToCall("start");
@@ -84,6 +90,11 @@ public class LandingController extends UifControllerBase {
                              BindingResult result,
                              HttpServletRequest request, 
                              HttpServletResponse response) {             
+        final String currentUser = GlobalVariables.getUserSession().getPrincipalId();
+        final String adminRole = getRoleService().getRoleByNamespaceCodeAndName("KR-SYS", "Technical Administrator").getId();
+        final List<String> adminRoles = new ArrayList<String>();
+        adminRoles.add(adminRole);
+        form.setUserIsAdmin(getRoleService().principalHasRole(currentUser, adminRoles, new HashMap<String,String>())); 
         form.setViewId("Outbox");
         form.setView(KRADServiceLocatorWeb.getViewService().getViewById("Outbox"));
         form.setMethodToCall("Outbox");
